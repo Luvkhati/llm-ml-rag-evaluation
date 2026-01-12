@@ -39,30 +39,30 @@ Machine Learning models often work well but are hard to explain. LLMs have stron
 - Automatic evaluation and visualization  
 
 
-## Workflow Overview
+## Workflow Overview:
 
 This project follows a step-by-step evaluation pipeline to compare Large Language Models (LLMs) with traditional Machine Learning (ML) models.
 
-1. **Configuration Loading**  
+1. **Configuration Loading:**  
    Experiment settings are loaded from a YAML configuration file. This defines the ML models, LLMs, metrics, test size, clustering strategy, and output settings.
 
-2. **Model and Data Loading**  
+2. **Model and Data Loading:**  
    Pre-trained ML models along with their training and test datasets are loaded based on the configuration.
 
-3. **Test Data Selection**  
+3. **Test Data Selection:**  
    Test samples are selected either randomly or using distance-based strategies to include both typical and challenging data points.
 
-4. **Clustering and Retrieval (RAG)**  
+4. **Clustering and Retrieval (RAG):**  
    Training data is clustered to group similar samples. Relevant clusters are retrieved and used as structured context for the LLM prompts.
 
-5. **LLM Prompting**  
+5. **LLM Prompting:**  
    Prompts are constructed using test data and retrieved cluster context, then sent to one or more LLMs for prediction or explanation.
 
-6. **Baseline Method Execution**  
+6. **Baseline Method Execution:**  
    Baseline explainability methods such as LIME (for predictions and feature importance) and DiCE (for counterfactuals) are executed for comparison.
 
-7. **Evaluation**  
+7. **Evaluation:**  
    Outputs from the LLMs, ML models, and baseline methods are evaluated using selected metrics to measure accuracy and explanation quality.
 
-8. **Result Storage and Visualization**  
+8. **Result Storage and Visualization:**  
    Evaluation results, raw outputs, prompts, and comparison plots are automatically saved for analysis.
