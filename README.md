@@ -11,7 +11,7 @@ The framework compares:
 
 All comparisons are done in a structured and repeatable way.
 
----
+
 
 ## Motivation
 
