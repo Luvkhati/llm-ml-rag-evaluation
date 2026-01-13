@@ -13,10 +13,20 @@ All comparisons are done in a structured and repeatable way.
 
 **Motivation:**
 
-Machine Learning models often work well but are hard to explain. LLMs have strong reasoning and language abilities, but their reliability on structured ML tasks is still unclear. This project helps study:
-- Whether LLM explanations align with ML model behavior  
-- How consistent LLM predictions are compared to ML models  
-- How LLM-based explanations compare with classical methods like LIME and DiCE  
+Machine Learning models often achieve strong performance but remain difficult to trust in high-stakes domains
+(e.g., healthcare, networking, and environmental monitoring) because their decisions are hard to explain.
+
+Traditional XAI methods such as LIME, SHAP, and DiCE commonly rely on perturbation-based synthetic samples,
+which can produce explanations that are invalid, unrealistic, or context-agnostic.
+
+LLMs can generate natural-language explanations and support interactive reasoning, but their reliability
+depends strongly on being grounded in real evidence rather than reasoning without context. This project helps study:
+
+- Whether evidence-grounded LLM explanations remain faithful to black-box ML model behavior  
+- How retrieval of local training regimes (Mixture-of-Experts) improves explanation context-awareness and trustability  
+- How the proposed ELMoE framework compares with classical baselines such as LIME (feature attribution)
+  and DiCE (counterfactuals) in terms of explanation quality and robustness  
+  
 
 
 **How the Framework Works:**
