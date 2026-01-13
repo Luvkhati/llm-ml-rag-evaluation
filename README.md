@@ -28,7 +28,6 @@ depends strongly on being grounded in real evidence rather than reasoning withou
   and DiCE (counterfactuals) in terms of explanation quality and robustness  
   
 
-
 **How the Framework Works:**
 
 1. Pre-trained ML models and datasets are loaded  
