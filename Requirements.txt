@@ -1,0 +1,32 @@
+## Requirements (Everything Needed)
+
+### 1) Platforms (Supported OS)
+- Windows 10/11
+- Linux (Ubuntu recommended)
+- macOS
+
+### 2) Python (Required)
+- Python >= 3.9  (Recommended: 3.10 or 3.11)
+- pip (comes with Python)
+
+### 3) Environment Setup (Recommended)
+- venv (built-in) OR conda
+
+### 4) External Services / Tools (If using LLM)
+- Git + GitHub
+- OpenAI API Key (for LLM calls)
+
+### 5) Python Packages (Install via pip)
+```txt
+numpy>=1.23
+pandas>=1.5
+scipy>=1.9
+scikit-learn>=1.2
+joblib>=1.2
+pyyaml>=6.0
+tqdm>=4.66
+matplotlib>=3.7
+plotly>=5.18
+lime>=0.2.0.1
+dice-ml>=0.10
+openai>=1.0.0
