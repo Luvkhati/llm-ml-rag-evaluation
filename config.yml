@@ -1,0 +1,131 @@
+LLM_models:
+  - ChatGPT  #128k
+  #- Llama400B  #10K
+  #- Qwen32B  #262.1k
+  #- LLama8B  #131.1K
+  #- LLama3B  #131.1k
+  
+  #- Mistral14B #262.1K  #521
+
+ML_models:
+   #- Ridge
+   #- DT
+   #- RF
+   - MLP
+   #- Transformer
+
+Metrics:
+   - Accuracy
+   #- Counterfactuals
+   #- Feature_importance
+
+RAG_Class_variables:
+  - KNN_RAG # KNN_RAG, VecDB_RAG, HybridVecRAG, Autoencoder_RAG
+
+# path where you might persist/load a RAG DB
+RAG_db_path: ""
+
+output_upgrade_CF: #Can be desired class for classification problems
+  Networking: [2000, 5, 2]
+  AQ: [-100]
+  Healthcare: ['Short'] 
+ 
+
+# Output-variable (key = number of outputs, value = subfolder)
+Output_variable_dict:
+  1: "One variable"
+  #2: "Two variables"
+  #3: "Three variables"
+
+#'One_output' (only prediction), 'Two_output' (prediciton + Feature_attributes) , 
+#'More_output' (prediciton + Feature_attributes + Model error + Dist_area)
+LLM_outputs: 'One_output' 
+
+Use_Case:
+    Networking: 'regression'
+    #AQ: 'regression'            #only 'One variable'
+    #Healthcare: 'classification' #only 'One variable'
+    
+
+# Where your model artifacts and CSVs live
+ML_files_folder: "C:/Users/luvkh/LLM Pipeline/ML_files"
+
+# RAG/Training knobs
+User_Train_enable: true
+Train_subset: 100
+Test_subset: 2
+
+# Test data selection strategy: 'random' or 'outlier_sampling' or 'bin_quantile_sampling'
+Test_selection_strategy: bin_quantile_sampling
+# Standardize features (z-score using training stats)
+Test_selection_standardize: true
+
+# Naming/paths for saving artifacts
+Save_Yes_or_No: 'Yes'
+Experiment: "Ablation_results"#"Final_Regression_Classification_random"
+saving_folder: "C:/Users/luvkh/LLM Pipeline/results"
+
+#Clustering_algorithm:Fuzzy or Gaussian, Expert_algorithm: OLS or SVR
+Clustering_algorithm: Gaussian
+Expert_algorithm: OLS
+
+# For reproducibility in sampling, etc.
+seed: 42
+RAG_debug: false
+
+Dice_grid:
+  Healthcare:
+   # Cardio-respiratory vitals (modifiable)
+   HR:            [10, -10]      # raise/lower heart rate by ±10 bpm
+   MAP:           [5, -5]        # mean arterial pressure ±5 mmHg
+   RESP_RATE:     [3, -3]        # breathing rate ±3 breaths/min
+   SPO2:          [2, -2]        # oxygen saturation ±2%
+   TEMP_C:        [0.5, -0.5]    # body temperature ±0.5°C
+
+   # Hematology / chemistry labs (first 24h)
+   FIRST_HEMOGLOBIN:     [1.0, -1.0]      # g/dL
+   FIRST_CREATININE:     [0.2, -0.2]      # mg/dL
+   FIRST_GLUCOSE:        [10, -10]        # mg/dL
+   FIRST_SODIUM:         [2.0, -2.0]      # mEq/L
+   FIRST_POTASSIUM:      [0.3, -0.3]      # mEq/L
+   FIRST_BICARBONATE:    [2.0, -2.0]      # mEq/L
+   
+  Networking:
+    RSRQ: [1, -1]
+    RSSI: [1, -1]
+    RSRP: [1, -1]
+    SNR: [1, -1]
+    CQI: [1, -1]
+    Speed: [10, -10]
+    UL_bitrate: [20, -30]
+
+  AQ:
+      "NO":    [5, -5]
+      "NO2":   [5, -5]
+      "PM10":  [10, -10]
+      "PM25":  [5, -5]
+      "O3":    [8, -8]
+      "BC":    [100, -100]
+      "WD":    [15, -15]
+      "WS":    [0.5, -0.5]
+      "T":     [1.0, -1.0]
+      "RH":    [5, -5]
+      "P":     [1.0, -1.0]
+
+Immutables:
+  Healthcare:
+    - ADMISSION_TYPE
+    - GENDER
+    - ETHNICITY
+    - AGE
+    - AGE_GROUP
+    - NUM_DIAGNOSES
+    - AGE_X_NUM_DIAGNOSES
+    - LABEL_MORTALITY
+
+  Networking:
+    - Longitude
+    - Latitude
+    - Speed               # fixed mobility context
+
+  AQ: []   # currently no immutable AQ features defined
